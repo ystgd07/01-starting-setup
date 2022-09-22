@@ -1,21 +1,23 @@
 import "./ExpenseItem.css";
 import ExpenseDate from "./ExpenseDate";
 import Card from "./Card";
+import React,{useState} from 'react'
 function ExpenseItem(props) {
-  // const expenseDate = new Date(2022, 9, 8);
-  // const expeneseTitle = "Car Insurance";
-  // const expenseAmount = 294.67;3
+  const [title,setTitle]=useState(props.title)
 
-  // const month = props.date.toLocaleString("ko-KR", { month: "long" });
-  // const year = props.date.toLocaleString("ko-KR", { year: "numeric" });
-  // const day = props.date.toLocaleString("ko-KR", { day: "numeric" });
   const amount=props.amount*1200
+
+  function clickHandler(){
+    setTitle('Updated!!')
+  }
   return (
     <Card className="expense-item">
       <ExpenseDate date={props.date} />
       <div className="expense-item__description">
-        <h2>{props.title}</h2>
+        <h2>{title}</h2>
         <div className="expense-item__price">{amount.toLocaleString('ko-KR')} 원</div>
+        <button onClick={clickHandler}>click</button>
+
       </div>
     </Card>
   );
